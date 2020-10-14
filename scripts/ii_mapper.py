@@ -1,11 +1,8 @@
 #!/usr/bin/env python
+
 from sys import stdin
 import re
-import os
 import json
-#import string
-
-#from nltk.corpus import stopwords
 
 stop_words= ['ourselves', 'hers', 'between', 'yourself', 'but', 'again', 
 	'there', 'about', 'once', 'during', 'out', 'very', 'having', 'with', 
@@ -27,7 +24,6 @@ stop_words= ['ourselves', 'hers', 'between', 'yourself', 'but', 'again',
 def read_input(file):
 	for line in file:
 		paper = json.loads(line)
-		# for i,paper in enumerate(data):
 		if not paper.has_key('abstract'):
 			continue
 		text = re.sub(r'[^\w\s]', '', (paper['abstract'] + ' ' + paper['title'])).lower().split()
@@ -36,7 +32,6 @@ def read_input(file):
 
 def main(separator='\t'):
 	data = read_input(stdin)
-
 	for paper_id, words in data:
 		for word in words:
 			print '%s%s%s' % (word, separator, paper_id)
