@@ -23,7 +23,7 @@ def main(separator='\t'):
 	for nid in graph:
 		es = graph[nid]
 		for e in es:
-      print '%s%s%s' % (nid, separator, e)
+			print '%s%s%s' % (nid, separator, e)
 			try:
 				newvals[e] += currvals[nid]
 			except:
