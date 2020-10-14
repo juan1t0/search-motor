@@ -1,9 +1,7 @@
 #!/usr/bin/env python
 #coding: utf-8
 
-import os
 import sys
-import re
 
 def read_mapper_output(file, separator='\t'):
 	graph, weightsn, weightsc = {}, {}, {}
