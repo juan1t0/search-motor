@@ -2,7 +2,6 @@
 #coding: utf-8
 
 from sys import stdin
-#import os
 import json
 
 def read_input(file, separator='\t'):
@@ -11,7 +10,7 @@ def read_input(file, separator='\t'):
                 if not paper.has_key('abstract'):
 			continue
 		if not paper.has_key('references'):
-			yield (paper['id'], 0.0
+			yield (paper['id'], 0.0)
                 refs = paper['references']
                 yield (paper['id'], float(len(refs))
                 for r in refs:
@@ -23,7 +22,6 @@ def main(separator='\t'):
 		if type(n_ref) is not float:
 			print '%s%s%s' % (paper_id, separator, n_ref)
 			continue
-		# for word in words:
 		if n_ref == 0.0:
 			val = 1.0
 		else:
