@@ -9,7 +9,7 @@ def read_mapper_output(file, separator='\t'):
 		dt = line.rstrip().split(separator, 1)
 		try:
 			dt[1] = float(dt[1])
-			weightsn[dt[0]]= dt[1]
+			weightsn[dt[0]]= 0.0
 			weightsc[dt[0]]= dt[1]
 		except:
                         if graph.has_key(dt[0])
