@@ -15,7 +15,7 @@ def read_input(file, separator='\t'):
                 refs = paper['references']
                 yield (paper['id'], float(len(refs))
                 for r in refs:
-                        yield (paper['id'],
+                        yield (paper['id'], r)
 
 def main(separator='\t'):
 	data = read_input(stdin, separator)
