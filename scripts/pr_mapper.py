@@ -3,30 +3,43 @@
 
 from sys import stdin
 import json
+from random import randint
 
-def read_input(file, separator='\t'):
+def fill_graph(graph):
+	n = len(graph)
+	for u in graph:
+		nv = graph[u][1]
+		id = graph[u][0]
+		vs = []
+		for i in range(nv):
+			v = randint(0,n-1)
+			while v != u:
+				v = randint(0,n-1)
+			vs.append(v)
+		graph[u] = (id, vs)
+	return graph
+	
+def read_input(file, graph, separator='\t'):
+	i = 0
 	for line in file:
                 paper = json.loads(line)
                 if not paper.has_key('abstract'):
 			continue
-		if not paper.has_key('references'):
-			yield (paper['id'], 0.0)
-                refs = paper['references']
-                yield (paper['id'], float(len(refs))
-                for r in refs:
-                        yield (paper['id'], r)
-
+                refs = randint(2,16)#len(paper['references'])
+                yield (paper['id'], refs)
+		graph[i] = (paper['id'], refs)
+		i+=1
+	graph = fill_graph(graph)
+		
 def main(separator='\t'):
-	data = read_input(stdin, separator)
+	graph = {}
+	data = read_input(stdin, graph, separator)
 	for paper_id, n_ref in data:
-		if type(n_ref) is not float:
-			print '%s%s%s' % (paper_id, separator, n_ref)
-			continue
-		if n_ref == 0.0:
-			val = 1.0
-		else:
-			val = 1.0 / n_ref
+		val = 1.0 / n_ref
 		print '%s%s%f' % (paper_id, separator, val)
+	for u in graph:
+		for v in graph[u][1]:
+			print '%s%s%s' % (graph[u][0], separator, graph[v][0])
 
 if __name__ == "__main__":
 	main()
