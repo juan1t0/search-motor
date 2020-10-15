@@ -15,7 +15,7 @@ def read_mapper_output(file, separator='\t'):
                         if graph.has_key(dt[0])
                                 graph[dt[0]].append(dt[1])
                         else:
-                                graph[dt[0]] = [dt[1]
+                                graph[dt[0]] = [dt[1]]
 	return graph, weightsn, weightsc
 
 def main(separator='\t'):
