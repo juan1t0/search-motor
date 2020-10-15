@@ -20,6 +20,7 @@ stop_words= ['ourselves', 'hers', 'between', 'yourself', 'but', 'again',
 	'those', 'i', 'after', 'few', 'whom', 't', 'being', 'if', 'theirs', 
 	'my', 'against', 'a', 'by', 'doing', 'it', 'how', 'further', 'was', 
 	'here', 'than']
+digits=['0','1','2','3','4','5','6','7','8','9']
 
 def read_input(file):
 	for line in file:
@@ -27,7 +28,9 @@ def read_input(file):
 		if not paper.has_key('abstract'):
 			continue
 		text = re.sub(r'[^\w\s]', '', (paper['abstract'] + ' ' + paper['title'])).lower().split()
+		text = list(set(text))
 		text = [w for w in text if not w in stop_words]
+		text = [w for w in text if not any(c.isdigit() for c in w)]
 		yield (paper['id'], text)
 
 def main(separator='\t'):
