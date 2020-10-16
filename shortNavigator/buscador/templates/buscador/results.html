@@ -1,0 +1,16 @@
+<p1>
+  Articulos relacionados
+</p1><br>
+{% if papers %}
+    <ul>
+    {% for paper in papers %}
+        <li>
+          {{paper.title}}
+          ({{paper.year}})
+          <a href="/buscador/papers/{{ paper.paper_id }}/"> ver </a>
+        </li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No hay articulos relacionados</p>
+{% endif %}

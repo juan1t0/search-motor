@@ -1,0 +1,13 @@
+{% if paper %}
+    <p>{{paper.title}}</p>
+    <p2>{{paper.year}}</p2>
+    <ul>
+        <li>
+            <p1>{{paper.authors}}</p1>
+        </li>
+    </ul>
+    <p2>Abstract: {{paper.abstract}}</p2><br><br>
+    <p2>Rank: {{paper.rank}}</p2>
+{% else %}
+    <p>No existe el articulo</p>
+{% endif %}
