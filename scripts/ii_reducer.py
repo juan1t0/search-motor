@@ -13,7 +13,9 @@ def main(separator='\t'):
 	for current_word, group in groupby(data, itemgetter(0)):
 		try:
 			real_group = [id for _, id in group]
-			print "%s%s%s" % (current_word, separator, real_group)
+                        group = ''
+                        for id in real_group: group += id +';'
+                        print "%s%s%s" % (current_word, separator, group.rstrip(';'))
 		except ValueError:
 			pass
 
