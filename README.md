@@ -8,5 +8,8 @@
 
 - PageRank
 
-`hadoop jar /usr/lib/hadoop-mapreduce/hadoop-streaming.jar -file ./scripts/pr_mapper.py -mapper ./scripts/pr_mapper.py -file ./scripts/pr_reducer.py -reducer ./scripts/pr_reducer.py -input /aminer/*.json -output /pgrank
+`hadoop jar /usr/lib/hadoop-mapreduce/hadoop-streaming.jar -file ./scripts/pr_mapper.py -mapper ./scripts/pr_mapper.py -file ./scripts/pr_reducer.py -reducer ./scripts/pr_reducer.py -input /aminer/*.json -output /pagerank0
+`
+
+`hadoop jar /usr/lib/hadoop-mapreduce/hadoop-streaming.jar -mapper '/usr/bin/cat' -file ./scripts/pr_reducer2.py -reducer ./scripts/pr_reducer2.py -input /pagerank0/part* -output /pagerank
 `
