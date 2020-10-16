@@ -1,4 +1,7 @@
-# search-motor
+# Motor de Busquedad
+
+## Dataset
+- https://www.kaggle.com/kmader/aminer-academic-citation-dataset
 
 ## Ejecución en google cloud
 - Indice invertido
@@ -13,3 +16,6 @@
 
 `hadoop jar /usr/lib/hadoop-mapreduce/hadoop-streaming.jar -mapper '/usr/bin/cat' -file ./scripts/pr_reducer2.py -reducer ./scripts/pr_reducer2.py -input /pagerank0/part* -output /pagerank
 `
+
+## Aplicación Web
+Realizada con `django`
